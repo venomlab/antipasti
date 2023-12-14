@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "antipasti"
-version = "0.0.1"
+version = "0.0.1-alpha.1"
 description = "Finally, a collection of useful stuff that you implement in your project every bloody time"
 authors = [
     "Oleh Chyhyryn <oleh.chyhyryn@outlook.com>",
@@ -8,22 +8,53 @@ authors = [
 ]
 license = "MIT"
 readme = "README.md"
+packages = [{ include = "antipasti" }]
 
 [tool.poetry.dependencies]
-python = "^3.8.1"
-
+python = "^3.9"
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.7.0"
-flake8 = "^6.1.0"
-flake8-pyproject = "^1.2.3"
-flake8-type-checking = "^2.5.1"
-black = "^23.11.0"
-isort = "^5.12.0"
-pytest = "^7.4.3"
-pyupgrade = "^3.15.0"
-commitizen = "^3.12.0"
+mypy = "~1.7.1"
+flake8 = "~6.1.0"
+flake8-pyproject = "~1.2.3"
+flake8-type-checking = "~2.8.0"
+flake8-bugbear = "~23.12.2"
+flake8-quotes = "~3.3.2"
+black = "~23.12.0"
+isort = "~5.13.2"
+pytest = "~7.4.3"
+pyupgrade = "~3.15.0"
+commitizen = "~3.13.0"
+flake8-bandit = "~4.1.1"
+flake8-print = "~5.0.0"
+flake8-builtins = "~2.2.0"
+flake8-eradicate = "~1.5.0"
+pep8-naming = "~0.13.3"
+flake8-debugger = "~4.1.2"
+pre-commit = "~3.6.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.flake8]
+max-line-length = 120
+inline-quotes = "double"
+ignore = ["B009", "B010", "W503"]
+per-file-ignores = ["antipasti/tests/*: S101"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+
+[tool.pytest.ini_options]
+addopts = "-s"
+python_files = "tests/*.py"
