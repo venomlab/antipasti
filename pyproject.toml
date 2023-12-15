@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "antipasti"
-version = "0.0.1-alpha.1"
+version = "0.0.1-a1"
 description = "Finally, a collection of useful stuff that you implement in your project every bloody time"
 authors = [
     "Oleh Chyhyryn <oleh.chyhyryn@outlook.com>",
