@@ -32,6 +32,7 @@ flake8-eradicate = "~1.5.0"
 pep8-naming = "~0.13.3"
 flake8-debugger = "~4.1.2"
 pre-commit = "~3.6.0"
+tox = "~4.11.4"
 
 [build-system]
 requires = ["poetry-core"]
@@ -49,7 +50,7 @@ line_length = 120
 max-line-length = 120
 inline-quotes = "double"
 ignore = ["B009", "B010", "W503"]
-per-file-ignores = ["antipasti/tests/*: S101"]
+per-file-ignores = ["tests/*: S101"]
 
 [tool.mypy]
 python_version = "3.9"
