@@ -1,6 +1,5 @@
 default_stages: [ commit ]
 fail_fast: true
-exclude: "config|docker|docs|scripts|migrations.versions|.coveragerc|.git|.tox"
 repos:
   - repo: local
     hooks:
@@ -55,3 +54,10 @@ repos:
       - id: check-ast
       - id: check-symlinks
       - id: forbid-new-submodules
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.13.0
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages:
+          - push
