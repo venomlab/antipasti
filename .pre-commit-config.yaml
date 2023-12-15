@@ -1,0 +1,64 @@
+default_install_hook_types: [pre-commit, pre-push, commit-msg]
+default_stages: [ commit ]
+fail_fast: true
+repos:
+  - repo: local
+    hooks:
+      - id: pyupgrade
+        name: PyUpgrade
+        language: system
+        entry: poetry run pyupgrade --py39-plus
+        pass_filenames: true
+        always_run: true
+      - id: black
+        name: Black
+        language: system
+        entry: poetry run black antipasti
+        pass_filenames: false
+        always_run: true
+      - id: isort
+        name: iSort
+        language: system
+        entry: poetry run isort antipasti
+        pass_filenames: false
+        always_run: true
+      - id: flake8
+        name: Flake8
+        language: system
+        entry: poetry run flake8 antipasti
+        pass_filenames: false
+        always_run: true
+      - id: mypy
+        name: my[py]
+        language: system
+        entry: poetry run mypy antipasti
+        pass_filenames: false
+        always_run: true
+      - id: pytest
+        name: PyTest
+        language: system
+        entry: poetry run pytest .
+        pass_filenames: false
+        always_run: true
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-symlinks
+      - id: forbid-new-submodules
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.13.0
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages:
+          - push
